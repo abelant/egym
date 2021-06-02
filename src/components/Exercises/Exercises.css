@@ -4,11 +4,38 @@
     max-width: 1500px;
     background-color: rgba(245, 245, 245, 0.068);
 }
+.wrapper h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 
 .cards {
     padding: 15px;
     display: flex;
     flex-flow: row wrap;
+}
+.controls{
+  display: flex;
+  flex-grow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.controls button {
+  padding: 10px;
+  border: 0px;
+  border-radius: 17px;
+  cursor: pointer;
+  width: 100px;
+  font-weight: bold;
+}
+.controls button:hover {
+  background-color: #70CDEE;
+}
+.controls .active{
+  background-color: #70CDEE;
 }
 @media screen and (min-width: 992px) {
 

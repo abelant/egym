@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import Exercise from '../Excercise/Exercise'
 import './Exercises.css'
+
+
 interface Gender {
     image:string;
 }
@@ -21,7 +23,7 @@ const Exercises = () => {
     const [exercises, setExercises] = useState<IExercise>();
     const [loading, setLoading]= useState<boolean>(true);
     const [error, setError] = useState("");
-    const [gender, setGender] = useState('')
+    const [gender, setGender] = useState("male")
 
     useEffect(() => {
         axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
@@ -35,18 +37,20 @@ const Exercises = () => {
                 console.log(error)
             })
     },[]);
-    
     return (
         <div className="wrapper">
-            <div>
-                <button onClick={() => setGender('female')}>Female</button>
-                <button onClick={() => setGender('male')}>Male</button>
+            <img src="../../images/logo.png" alt=""/>
+            <h3>Select gender</h3>
+            <div className="controls">
+                <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
+                <button onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
             </div>
             {loading ? "Loading" : ''}
             <div className="cards">
                 {exercises?.exercises.map((exercise, index) => {
-                    return <Exercise 
-                                key={exercise.id}
+                    return <Exercise
+                                key={index}
+                                idx={index}
                                 name={exercise.name}
                                 image={gender === 'female' ? exercise.female.image : exercise.male.image}
                                 transcript={exercise.transcript}

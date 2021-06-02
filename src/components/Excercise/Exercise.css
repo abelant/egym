@@ -79,8 +79,7 @@
     opacity: 0.5;
 }
 .card.is-inactive:hover .card__inner {
-    background-color: grey;
-    transform: scale(.2);
+    transform: scale(1);
 }
 .card__details{
     display: flex;
