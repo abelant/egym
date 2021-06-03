@@ -2,9 +2,6 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import Exercise from '../Excercise/Exercise'
 import './Exercises.css'
-import { resolve } from 'path'
-
-
 interface Gender {
     image:string;
 }
@@ -22,8 +19,6 @@ interface IExercise {
 
 const Exercises = () => {
     const [exercises, setExercises] = useState<IExercise>();
-    const [loading, setLoading]= useState<boolean>(true);
-    const [error, setError] = useState("");
     const [gender, setGender] = useState("male")
 
 
@@ -33,26 +28,22 @@ const Exercises = () => {
                const response = await axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
                setExercises(response.data)
             } catch (err){
-                setError("Something went wrong!")
+                return err;
             }
         }
         getData();
-
         
     },[]);
     
     if(!exercises){
         return <div data-testid="loading">Loading...</div> 
     }
-    if(error){
-        return <div data-testid="error">{error}</div>
-    }
 
     return (
         <div className="wrapper" data-testid="resolved">
             <div className="controls">
-                <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
-                <button onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
+                <button data-testid="female-button" onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
+                <button  data-testid="male-button" onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
             </div>
             
             <div className="cards" >

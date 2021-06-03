@@ -3,8 +3,13 @@ import './Modal.css'
 
 const Modal = ({showModal, setShowModal, content, image}: any) => {
 
+    const closeModal = () => {
+        setShowModal((prev:Boolean) => !prev)
+    }
+
+    
     return(
-        <>
+        <div>
             {showModal ? 
                 <div className="modal__background" > 
                     <div className="modal__wrapper">
@@ -14,14 +19,14 @@ const Modal = ({showModal, setShowModal, content, image}: any) => {
                         <div className="modal__content">
                             {content}
                         </div>
-                        <div className="modal__close" onClick={() => setShowModal((prev:Boolean) => !prev)}>
+                        <div className="modal__close" data-testid="close" onClick={closeModal}>
                             X
                         </div>
                     </div>
                 </div>
                 
             : null}
-        </>
+        </div>
     )
 }
 

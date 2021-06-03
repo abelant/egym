@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Exercise.css'
 import Modal from '../Modal/Modal'
+
 interface ExerciseProps {
     name: string;
     image: string;
@@ -11,10 +12,8 @@ interface ExerciseProps {
 const Exercise = (props: ExerciseProps) => {
     const [showModal, setShowModal] = useState(false);
 
-    const  openModal = () => {
+    const openModal = () => {
         setShowModal(prev => !prev);
-        if(showModal === true){
-        }
     }
    
     return (
