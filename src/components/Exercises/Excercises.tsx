@@ -24,7 +24,6 @@ interface IExercise {
 
 const Exercises = () => {
 
-    const genderLocal = JSON.stringify(localStorage.getItem('gender'));
 
     const [exercises, setExercises] = useState<IExercise>();
 
@@ -32,7 +31,6 @@ const Exercises = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
-    console.log(genderLocal)
 
     const fetchData = async () => {
         return await axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')

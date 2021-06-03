@@ -54,6 +54,55 @@
     padding: 0;
     z-index: 10;
 } 
+
+
+.global__modal__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    width: 100%;
+    background: rgba(0, 0, 0, 1);
+    position: fixed;
+   
+}
+.global__modal__wrapper {
+    width: 50%;
+    max-width: 800px;
+    height: 400px;
+    max-width: 600px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.658);
+    display: grid;
+    grid-template-rows: 38% 3% auto ;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    z-index: 10;
+    border-radius: 10px;
+    text-align: center;
+    gap: 10px;
+    margin: auto;
+
+}
+.global__modal__wrapper button {
+    padding: 10px;
+    border: 0px;
+    border-radius: 17px;
+    cursor: pointer;
+    width: 150px;
+    font-weight: bold;
+    text-align: center;
+    gap: 10px;
+}
+  .global__modal__wrapper button:hover {
+    background-color: #70CDEE;
+}
+.global__modal__wrapper h1 {
+    display: grid;
+    align-self: center;
+}
+
 @media screen and (max-width: 991px) {
     .modal__wrapper {
         width: 90%;
@@ -78,6 +127,9 @@
         font-size: 14px;
         padding-top: 10px;
     }
+    .global__modal__wrapper{
+        width: 90%;
+    }
 }
 @media screen and (max-width: 767px) {
     .modal__wrapper {
@@ -95,6 +147,12 @@
     .modal__content{
         display: grid;
         font-size: 14px;
+    }
+    .global__modal__wrapper{
+        width: 90%;
+        overflow-y: hidden;
+        display: grid;
+        justify-content: center;
     }
 }
 @media screen and (max-width: 400px) {
@@ -114,60 +172,14 @@
         display: grid;
         font-size: 12px;
     }
-}
-
-.global__modal__background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    width: 100%;
-    background: rgba(0, 0, 0, 1);
-    position: fixed;
-   
-}
-.global__modal__wrapper {
-    margin: auto;
-    width: 50%;
-    max-width: 800px;
-    height: 400px;
-    max-width: 600px;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-    color: rgba(0, 0, 0, 0.658);
-    display: grid;
-    grid-template-rows: 38% 3% auto ;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    z-index: 10;
-    border-radius: 10px;
-    text-align: center;
-    gap: 10px;
-}
-.global__modal__wrapper button {
-    padding: 10px;
-    border: 0px;
-    border-radius: 17px;
-    cursor: pointer;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    gap: 10px;
-}
-  .global__modal__wrapper button:hover {
-    background-color: #70CDEE;
-}
-.global__modal__wrapper h1 {
-    display: grid;
-    align-self: center;
-}
-
-@media screen and (max-width: 400px) {
     .global__modal__wrapper{
-        width: 50%;
+        width: 90%;
         overflow-y: hidden;
         display: grid;
         justify-content: center;
     }
    
 }
+
+
+
