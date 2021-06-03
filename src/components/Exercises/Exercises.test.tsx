@@ -26,7 +26,7 @@ describe('Exercises', () => {
         const mockAxios = axios as jest.Mocked<typeof axios>
         await act(async () => {
             await mockAxios.get.mockImplementationOnce(() => Promise.resolve(data));
-            const { getByTestId } = render(<Exercises/>)
+            render(<Exercises/>)
         })
         await expect(axios.get).toHaveBeenCalledWith("https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/");
         await expect(axios.get).toHaveBeenCalledTimes(1);
