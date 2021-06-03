@@ -1,12 +1,17 @@
 import React from 'react'
 import './Modal.css'
-
+import close from '../../close.png'
 const Modal = ({showModal, setShowModal, content, image}: any) => {
+   
 
     const closeModal = () => {
         setShowModal((prev:Boolean) => !prev)
     }
-
+     
+    const style = {
+        width:'20px',
+        height:'20px'
+    }
     
     return(
         <div>
@@ -20,7 +25,7 @@ const Modal = ({showModal, setShowModal, content, image}: any) => {
                             {content}
                         </div>
                         <div className="modal__close" data-testid="close" onClick={closeModal}>
-                            X
+                            <img style={style} src={close} alt=""/>
                         </div>
                     </div>
                 </div>
