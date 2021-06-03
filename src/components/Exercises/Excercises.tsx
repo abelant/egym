@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import Exercise from '../Excercise/Exercise'
 import './Exercises.css'
+import { resolve } from 'path'
 
 
 interface Gender {
@@ -25,38 +26,47 @@ const Exercises = () => {
     const [error, setError] = useState("");
     const [gender, setGender] = useState("male")
 
+
     useEffect(() => {
-        axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
-            .then(response => {
-                setExercises(response.data);
-                setLoading(false)
-            })
-            .catch(error => {
-                setError(error)
-                setLoading(false);
-                console.log(error)
-            })
+        const getData = async() => {
+            try {
+               const response = await axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
+               setExercises(response.data)
+            } catch (err){
+                setError("Something went wrong!")
+            }
+        }
+        getData();
+
+        
     },[]);
+    
+    if(!exercises){
+        return <div data-testid="loading">Loading...</div> 
+    }
+    if(error){
+        return <div data-testid="error">{error}</div>
+    }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" data-testid="resolved">
             <div className="controls">
                 <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
                 <button onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
             </div>
-            {loading ? "Loading" : ''}
+            
             <div className="cards" >
                 {exercises?.exercises.map((exercise, index) => {
                     return <Exercise
                                 key={index}
-                                name={exercise.name}
+                                name={exercise.name} data-testid="resolved"
                                 image={gender === 'female' ? exercise.female.image : exercise.male.image}
                                 transcript={exercise.transcript}
                                 bodyAreas={exercise.bodyAreas}
                             />
                 })}
             </div>
-            {error && <p>{error}</p>}
+            
         </div>
     )
 }
