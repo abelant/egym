@@ -20,6 +20,7 @@ interface IExercise {
 const Exercises = () => {
     const [exercises, setExercises] = useState<IExercise>();
     const [gender, setGender] = useState("male")
+    const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
     const fetchData = async () => {
@@ -31,12 +32,17 @@ const Exercises = () => {
             setExercises(res.data)
             setLoading(false);
         })
+        .catch(err => {
+            setError(err)
+        })
     },[]);
     
     if(loading){
         return  <div data-testid="loading">Loading...</div> 
     }
-   
+    if(error !== ""){
+        return <div>{error}</div>
+    }
     return (
         <>
                     <div className="wrapper" data-testid="resolved">
