@@ -6,7 +6,6 @@ interface ExerciseProps {
     image: string;
     transcript: string;
     bodyAreas: [];
-    idx:number;
 }
 
 const Exercise = (props: ExerciseProps) => {

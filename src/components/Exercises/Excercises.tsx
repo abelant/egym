@@ -40,8 +40,6 @@ const Exercises = () => {
 
     return (
         <div className="wrapper">
-            <img src={"@/images/logo.png"} alt=""/>
-            <h3>Select gender</h3>
             <div className="controls">
                 <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
                 <button onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
@@ -51,7 +49,6 @@ const Exercises = () => {
                 {exercises?.exercises.map((exercise, index) => {
                     return <Exercise
                                 key={index}
-                                idx={index}
                                 name={exercise.name}
                                 image={gender === 'female' ? exercise.female.image : exercise.male.image}
                                 transcript={exercise.transcript}
