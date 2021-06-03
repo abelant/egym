@@ -20,7 +20,7 @@ const Exercise = (props: ExerciseProps) => {
    
     return (
         <>
-        <div className={`card is-collapsed`} onClick={openModal}>
+        <div className="card " onClick={openModal}>
            <div className="card__inner" >
                 <div className="card__details">
                     <img className="card__image" src={props.image} alt=""/>
