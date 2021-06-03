@@ -23,7 +23,7 @@ const Exercises = () => {
     const [exercises, setExercises] = useState<IExercise>();
     const [loading, setLoading]= useState<boolean>(true);
     const [error, setError] = useState("");
-    const [gender, setGender] = useState("")
+    const [gender, setGender] = useState("male")
 
     useEffect(() => {
         axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
@@ -37,16 +37,17 @@ const Exercises = () => {
                 console.log(error)
             })
     },[]);
-    
+
     return (
         <div className="wrapper">
+            <img src={"@/images/logo.png"} alt=""/>
             <h3>Select gender</h3>
             <div className="controls">
                 <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
                 <button onClick={() => setGender('male')} className={`${gender === 'male' ? 'active' : ''}`}>MALE</button>
             </div>
             {loading ? "Loading" : ''}
-            <div className="cards">
+            <div className="cards" >
                 {exercises?.exercises.map((exercise, index) => {
                     return <Exercise
                                 key={index}

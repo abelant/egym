@@ -1,6 +1,8 @@
 .wrapper {
-    max-width: 100%;
+    width: 100%;
+    max-width: 1500px;
     background-color: rgba(245, 245, 245, 0.068);
+    margin: auto;
 }
 .wrapper h3{
   display: flex;

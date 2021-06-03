@@ -14,6 +14,8 @@ const Exercise = (props: ExerciseProps) => {
 
     const  openModal = () => {
         setShowModal(prev => !prev);
+        if(showModal === true){
+        }
     }
    
     return (
@@ -28,19 +30,18 @@ const Exercise = (props: ExerciseProps) => {
                     </div>
                 </div>
             </div>
-            
         </div>
-        <Modal  showModal={showModal}  
-                setShowModal={setShowModal} 
-                content= {
-                    <div>
-                        <span>{props.name}</span>
-                        <div dangerouslySetInnerHTML = {{ __html: props.transcript}}></div>
-                    </div>
-                }
-                image={props.image}
-        />
-    </>
+            <Modal  showModal={showModal}  
+                    setShowModal={setShowModal} 
+                    content= {
+                        <div>
+                            <h3>{props.name}</h3>
+                            <div dangerouslySetInnerHTML = {{ __html: props.transcript}}></div>
+                        </div>
+                    }
+                    image={props.image}
+            />
+        </>
     )
 }
 
