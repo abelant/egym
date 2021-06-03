@@ -150,3 +150,20 @@
         width: calc(200% + 30px);
     }
 }
+.content{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.content .content__category {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 10px;
+    font-weight: bold;
+    color: #d3d3d3;
+}
+.content p {
+    padding-top: 15px;
+}

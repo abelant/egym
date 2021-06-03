@@ -25,7 +25,7 @@ const Exercise = (props: ExerciseProps) => {
                 <div className="card__details">
                     <img className="card__image" src={props.image} alt=""/>
                     <div className="card__name">
-                        <p>{props.bodyAreas}</p>
+                        <p>{props.bodyAreas.join(' ')}</p>
                         <h4>{props.name}</h4>
                     </div>
                 </div>
@@ -34,8 +34,9 @@ const Exercise = (props: ExerciseProps) => {
             <Modal  showModal={showModal}  
                     setShowModal={setShowModal} 
                     content= {
-                        <div>
-                            <h3>{props.name}</h3>
+                        <div className="content">
+                            <h2 className="content__title">{props.name}</h2>
+                            <span className="content__category">{props.bodyAreas.join(' ')}</span>
                             <div dangerouslySetInnerHTML = {{ __html: props.transcript}}></div>
                         </div>
                     }

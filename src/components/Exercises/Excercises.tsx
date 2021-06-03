@@ -13,7 +13,7 @@ interface Data {
     transcript: string;
     female: Gender,
     male: Gender
-    bodyAreas: []
+    bodyAreas: [];
 }
 interface IExercise {
     exercises: Data[]
