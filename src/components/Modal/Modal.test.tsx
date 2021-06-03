@@ -12,4 +12,4 @@ test('modal shows the children and a close button', async () => {
     fireEvent.click(close);
   
     expect(handleClose).toHaveBeenCalled()
-  })
+})

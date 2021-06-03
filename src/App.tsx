@@ -2,7 +2,7 @@ import React from 'react';
 import Excercises from './components/Exercises/Excercises'
 import logo from './logo.png'
 function App() {
-
+  
   const style = {
     width: '115px',
     display: 'flex',
