@@ -1,43 +1,52 @@
 import React from 'react';
-import { render, cleanup, waitFor, act} from '@testing-library/react';
+import { render, act, fireEvent, getByTestId} from '@testing-library/react';
 import Exercises from './Excercises';
 import axios from 'axios';
+
 jest.mock('axios');
 
-afterEach(cleanup);
+const data = {
+    exercises:{
+        name:'Test',
+        transcript:'Transcript',
+        female:{
+            image:'test'
+        },
+        male:{
+            image:'test'
+        },
+        bodyAreas:['body','areas']
+    }
+}
 
 describe('Exercises', () => {
-    it('renders exercises component',  () => {
-        act(() => {
-            render(<Exercises />)
-        });
-    });
-    it('fetches and display data', async () => {
-        const { getByTestId } = render(<Exercises />)
-        const mockAxios = axios as jest.Mocked<typeof axios>
-        const data = {
-            exercises:{
-                name: 'Name',
-                transcript: 'Transcript',
-                female:{
-                    image:'image.png'
-                },
-                male:{
-                    image:'image.png'
-                },
-                bodyAreas:['Body', 'Areas']
-            }
-        }
-
-        await waitFor(() => expect(getByTestId('loading').textContent).toBe("Loading..."));
-        
-        mockAxios.get.mockResolvedValueOnce({data: {}})
-        mockAxios.get.mockRejectedValue('Network error: something went wrong');
-        mockAxios.get.mockImplementationOnce(() => Promise.resolve(data))
-        
-        expect(await mockAxios.get).toHaveBeenCalledWith('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/');
+    afterEach(() => {
+        jest.clearAllMocks();
     })
-    it('should click buttons', async () => {
-        const { getByTestId } = render(<Exercises />)
-    });
+    test('load data from api', async () => {
+        const mockAxios = axios as jest.Mocked<typeof axios>
+        await act(async () => {
+            await mockAxios.get.mockImplementationOnce(() => Promise.resolve(data));
+            const { getByTestId } = render(<Exercises/>)
+        })
+        await expect(axios.get).toHaveBeenCalledWith("https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/");
+        await expect(axios.get).toHaveBeenCalledTimes(1);
+    })
+    test('render and click buttons', async  () => {
+        const mockAxios = axios as jest.Mocked<typeof axios>
+        await act(async () => {
+            await mockAxios.get.mockImplementationOnce(() => Promise.resolve(data));
+            const { getByTestId } = render(<Exercises/>)
+            
+            const femaleButon = getByTestId('female')
+            const maleButton = getByTestId('male')
+
+            fireEvent.click(getByTestId('female'))
+            fireEvent.click(getByTestId('male'))
+
+            expect(femaleButon.textContent).toBe('FEMALE')
+            expect(maleButton.textContent).toBe('MALE')
+        })
+    })
+
 })

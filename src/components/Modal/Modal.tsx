@@ -3,7 +3,6 @@ import './Modal.css'
 import close from '../../close.png'
 const Modal = ({showModal, setShowModal, content, image}: any) => {
    
-
     const closeModal = () => {
         setShowModal((prev:Boolean) => !prev)
     }
