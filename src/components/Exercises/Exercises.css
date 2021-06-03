@@ -1,7 +1,5 @@
 .wrapper {
-    margin: 5em auto;
     max-width: 100%;
-    max-width: 1500px;
     background-color: rgba(245, 245, 245, 0.068);
 }
 .wrapper h3{
@@ -37,30 +35,4 @@
 .controls .active{
   background-color: #70CDEE;
 }
-@media screen and (min-width: 992px) {
 
-    .card:nth-of-type(3n+2) .card__expander {
-        margin-left: calc(-100% - 30px);
-    }
-    .card:nth-of-type(3n+3) .card__expander {
-        margin-left: calc(-200% - 60px);
-    }
-    .card:nth-of-type(3n+4) {
-        clear: left;
-    }
-    .card__expander {
-        width: calc(300% + 60px);
-    }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  
-    .card:nth-of-type(2n+2) .card__expander {
-        margin-left: calc(-100% - 30px);
-    }
-    .card:nth-of-type(2n+3) {
-        clear: left;
-    }
-    .card__expander {
-        width: calc(200% + 30px);
-    }
-}

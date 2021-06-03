@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Exercise.css'
-
+import Modal from '../Modal/Modal'
 interface ExerciseProps {
     name: string;
     image: string;
@@ -10,16 +10,15 @@ interface ExerciseProps {
 }
 
 const Exercise = (props: ExerciseProps) => {
+    const [showModal, setShowModal] = useState(false);
 
-    const [active, setActive] = useState("is-collapsed");
-
-    const  toggleDetails = () => {
-       setActive(active === "is-collapsed" ? "is-expanded" : "is-collapsed")
+    const  openModal = () => {
+        setShowModal(prev => !prev);
     }
    
-
     return (
-        <div className={`card ${active}`} onClick={toggleDetails}>
+        <>
+        <div className={`card is-collapsed`} onClick={openModal}>
            <div className="card__inner" >
                 <div className="card__details">
                     <img className="card__image" src={props.image} alt=""/>
@@ -28,15 +27,20 @@ const Exercise = (props: ExerciseProps) => {
                         <h4>{props.name}</h4>
                     </div>
                 </div>
-               { active ?  
-                <div className={`card__expander ${active}`}>
-                    <span>{props.name}</span>
-                    <div dangerouslySetInnerHTML = {{ __html: props.transcript}}></div>
-                </div> 
-                : null
-                }
             </div>
+            
         </div>
+        <Modal  showModal={showModal}  
+                setShowModal={setShowModal} 
+                content= {
+                    <div>
+                        <span>{props.name}</span>
+                        <div dangerouslySetInnerHTML = {{ __html: props.transcript}}></div>
+                    </div>
+                }
+                image={props.image}
+        />
+    </>
     )
 }
 

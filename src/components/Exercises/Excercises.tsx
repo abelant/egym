@@ -23,7 +23,7 @@ const Exercises = () => {
     const [exercises, setExercises] = useState<IExercise>();
     const [loading, setLoading]= useState<boolean>(true);
     const [error, setError] = useState("");
-    const [gender, setGender] = useState("male")
+    const [gender, setGender] = useState("")
 
     useEffect(() => {
         axios.get<IExercise>('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
@@ -37,9 +37,9 @@ const Exercises = () => {
                 console.log(error)
             })
     },[]);
+    
     return (
         <div className="wrapper">
-            <img src="../../images/logo.png" alt=""/>
             <h3>Select gender</h3>
             <div className="controls">
                 <button onClick={() => setGender('female')} className={`${gender === 'female' ? 'active' : ''}`}>FEMALE</button>
@@ -56,7 +56,6 @@ const Exercises = () => {
                                 transcript={exercise.transcript}
                                 bodyAreas={exercise.bodyAreas}
                             />
-                   
                 })}
             </div>
             {error && <p>{error}</p>}
