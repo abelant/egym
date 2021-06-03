@@ -18,8 +18,8 @@ const GlobalModal = ({showModal, setShowModal, setGender}: any) => {
                         <h1>Get Started</h1>
                         <h3>Select your gender</h3>
                         <div className="controls">
-                            <button onClick={() => setMale('female')}>Female</button>
-                            <button onClick={() => setFemale('male')}>Male</button>
+                            <button data-testid="female" onClick={() => setMale('female')}>FEMALE</button>
+                            <button data-testid="male" onClick={() => setFemale('male')}>MALE</button>
                         </div>
                     </div>
                 </div>
