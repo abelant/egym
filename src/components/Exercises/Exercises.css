@@ -21,7 +21,7 @@
   flex-grow: column wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
   position: -webkit-sticky;
   position: sticky;
   top: 0;

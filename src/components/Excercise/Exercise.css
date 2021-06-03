@@ -55,6 +55,7 @@
     border-radius: 30px;
     border: 0 !important;
     transition: all 0.3s;
+    max-height: 400px;
 }
 @media screen and (max-width: 991px) {
     .card {
