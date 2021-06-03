@@ -18,7 +18,6 @@ const data = {
         bodyAreas:['body','areas']
     }
 }
-
 describe('Exercises', () => {
     afterEach(() => {
         jest.clearAllMocks();
